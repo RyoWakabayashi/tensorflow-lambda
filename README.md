@@ -10,7 +10,14 @@ Example of running TensorFlow in Lambda
 
 ## Setup
 
-Install asdf plugins
+Clone the repository.
+
+```bash
+git clone https://github.com/RyoWakabayashi/tensorflow-lambda.git
+cd tensorflow-lambda
+```
+
+Install asdf plugins.
 
 ```bash
 asdf plugin-add aws-sam-cli \
@@ -108,6 +115,28 @@ You may view the log.
 
 ```bash
 sam logs --stack-name some-stack-name
+```
+
+## Preparing to edit this repository
+
+Install commitlint.
+
+```bash
+yarn
+```
+
+Install pre-commit.
+
+```bash
+pip install --requirement requirements.txt
+asdf reshim python
+pre-commit install
+```
+
+Run pre-commit manually.
+
+```bash
+pre-commit run --all-files
 ```
 
 ## Notes

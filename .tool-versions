@@ -1,0 +1,6 @@
+aws-sam-cli 1.53.0
+direnv 2.32.1
+jq 1.6
+nodejs 18.7.0
+python 3.10.5
+yarn 1.22.19

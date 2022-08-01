@@ -3,10 +3,6 @@ FROM tensorflow/tensorflow:2.9.1
 ENV PYTHONUNBUFFERED=TRUE
 ENV PYTHONDONTWRITEBYTECODE=TRUE
 
-ADD https://github.com/aws/aws-lambda-runtime-interface-emulator/releases/latest/download/aws-lambda-rie /usr/bin/aws-lambda-rie
-
-RUN chmod 755 /usr/bin/aws-lambda-rie
-
 COPY entry.sh "/entry.sh"
 
 RUN chmod +x /entry.sh

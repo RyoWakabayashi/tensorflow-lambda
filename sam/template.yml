@@ -1,0 +1,45 @@
+---
+
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Metadata:
+  cfn-lint:
+    config:
+      ignore_checks:
+        - I3042
+
+Globals:
+  Function:
+    Timeout: 120
+    MemorySize: 1000
+
+Resources:
+  RestApi:
+    Type: AWS::Serverless::Api
+    Name: tensorflow-sample-api
+    Properties:
+      StageName: v1
+      BinaryMediaTypes:
+        - image~1jpeg
+
+  TensorflowSampleFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      PackageType: Image
+      FunctionName: tensorflow-sample
+      Events:
+        Inference:
+          Type: Api
+          Properties:
+            RestApiId: !Ref RestApi
+            Path: /predictions
+            Method: post
+    Metadata:
+      Dockerfile: Dockerfile
+      DockerContext: ./classifier
+
+Outputs:
+  Api:
+    Description: "API Gateway endpoint URL for v1 stage for Tensorflow sample function"
+    Value: !Sub "https://${RestApi}.execute-api.${AWS::Region}.amazonaws.com/v1/predictions"

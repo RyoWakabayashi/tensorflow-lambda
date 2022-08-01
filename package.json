@@ -1,0 +1,12 @@
+{
+  "name": "tensorflow-lambda",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "prepare": "bash -c \"cp ./git_hooks/commit-msg ./.git/hooks/\""
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3"
+  }
+}

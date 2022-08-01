@@ -1,0 +1,12 @@
+*.h5
+
+__pycache__
+
+node_modules
+
+.env-exports
+
+config.tfbackend
+
+samconfig.toml
+.aws-sam
